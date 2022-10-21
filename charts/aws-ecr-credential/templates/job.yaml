@@ -2,7 +2,7 @@ apiVersion: batch/v1
 kind: Job
 metadata:
   name: {{ include "aws-ecr-credential.job" . }}
-  namespace: {{ include "aws-ecr-credential.namespace" . }}
+  namespace: {{ .Release.Namespace }}
   labels:
 {{ include "aws-ecr-credential.labels" . | indent 4 }}
 spec:
