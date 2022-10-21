@@ -9,7 +9,8 @@ Simply deploy this chart to your kubernetes cluster and you will be able to pull
 Run the following command to install this chart
 
 ```sh
-helm install --name aws-ecr-credential architectminds/aws-ecr-credential \
+helm repo add commbat-charts https://github.com/commbat/helm-charts/raw/master/charts
+helm install --name aws-ecr-credential commbat-charts/aws-ecr-credential \
   --set-string aws.account=<aws account nubmer> \
   --set aws.region=<aws region> \
   --set aws.accessKeyId=<base64> \

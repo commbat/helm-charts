@@ -1,0 +1,41 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ .Release.Name }}
+  namespace: {{ .Release.Namespace }}
+  labels:
+{{ include "vault-init.labels" . | indent 4 }}
+spec:
+  selector:
+    matchLabels:
+{{ include "vault-init.podLabels" . | indent 6 }}
+  replicas: 1
+  template:
+    metadata:
+      labels:
+{{ include "vault-init.podLabels" . | indent 8 }}
+    spec:
+      containers:
+      - name: vault-init
+        image: 038824004049.dkr.ecr.us-west-2.amazonaws.com/vault-init@sha256:c92edc1f0e11b3d751ce629f3d035ee1ddf4706db83019d555140a77c53c72a2
+        imagePullPolicy: Always
+        env:
+        - name: CHECK_INTERVAL
+          value: {{ quote .Values.checkInterval }}
+        - name: S3_BUCKET_NAME
+          value: {{ quote .Values.s3BucketName }}
+        - name: KMS_KEY_ID
+          value: {{ quote .Values.kmsKeyARN }}
+        - name: AWS_REGION
+          value: {{ quote .Values.awsRegion }}
+        - name: AWS_ACCESS_KEY_ID
+          value: {{ quote .Values.awsAccessKeyID }}
+        - name: AWS_SECRET_ACCESS_KEY
+          valueFrom:
+            secretKeyRef:
+              name: {{ .Values.awsSecretName }}
+              key: AWS_SECRET_ACCESS_KEY
+        - name: VAULT_ADDR
+          value: {{ quote .Values.vaultAddr }}
+      imagePullSecrets:
+      - name: {{ .Values.pullSecret }}

@@ -1,0 +1,16 @@
+# The time in seconds between Vault health checks.
+checkInterval: 300
+# The Amazon S3 Bucket where the vault master key and root token is stored.
+s3BucketName: vault-storage
+# The Amazon KMS key ID used to encrypt and decrypt the vault master key and root token.
+kmsKeyARN: arn:aws:kms:us-east-1:1234567819:key/dead-beef-dead-beef-deadbeefdead
+# The AWS region
+awsRegion: us-west-2
+# The AWS access key
+awsAccessKeyID: access-key-id
+# Name of the secret containing the AWS secret access key
+awsSecretName: vault
+# The vault API address.
+vaultAddr: https://vault.service.consul:8200
+# Secret to add to image pull secrets
+pullSecret: docker-cfg

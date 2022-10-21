@@ -3,7 +3,7 @@ entries:
   aws-ecr-credential:
   - apiVersion: v1
     appVersion: 1.5.0
-    created: "2022-10-16T02:06:39.093111637-06:00"
+    created: "2022-10-21T13:20:50.23116706-06:00"
     description: This Chart seemlessly integrates Kubernetes with AWS ECR
     digest: 177d19e77d846151df7ab70705bdc9c4950f40c43b752a6e00879ac5ede03cbb
     keywords:
@@ -21,4 +21,24 @@ entries:
     urls:
     - aws-ecr-credential-1.6.0.tgz
     version: 1.6.0
-generated: "2022-10-16T02:06:39.092485455-06:00"
+  vault-init:
+  - apiVersion: v1
+    appVersion: 1.0.0
+    created: "2022-10-21T13:20:50.245896154-06:00"
+    description: This Chart initializes a Vault installation
+    digest: 577c714af04ea792d343bd3c495c2707cb6fdf1c04f88030dace9f9119279700
+    keywords:
+    - vault
+    - kubernetes
+    - aws
+    - kms
+    maintainers:
+    - email: jluna@commbat.io
+      name: Jorge Luna
+    name: vault-init
+    sources:
+    - https://github.com/commbat/helm-charts/tree/master/charts/vault-init
+    urls:
+    - vault-init-1.0.0.tgz
+    version: 1.0.0
+generated: "2022-10-21T13:20:50.215636151-06:00"
